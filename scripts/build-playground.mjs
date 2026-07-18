@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(projectRoot, 'playground', 'bundle');
-const releaseTag = process.env.NORTHLINE_RELEASE_TAG ?? 'v1.0.1';
+const releaseTag = process.env.NORTHLINE_RELEASE_TAG ?? 'v1.0.2';
 const repository = process.env.GITHUB_REPOSITORY ?? 'kishi1997/northline-commerce-lab';
 const releaseBase = `https://raw.githubusercontent.com/${repository}/${releaseTag}/playground/bundle`;
 
