@@ -75,7 +75,7 @@ The project advances through explicit review gates. Code implementation starts o
 
 - Finish the bilingual README, case study, architecture decisions, threat model, test evidence, and operations guide.
 - Preserve real Issue, branch, PR, CI, and release history through GitHub Flow.
-- Publish the reproducible `v1.0.0` Playground bundle and screenshots.
+- Publish the reproducible tagged Playground bundle and screenshots.
 
 **Completion:** the repository explains the problem, decisions, implementation, verification, and operational ownership—not only the final appearance.
 

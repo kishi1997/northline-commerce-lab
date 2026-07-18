@@ -30,4 +30,4 @@
 - PHPCS: 9 source files passed.
 - npm audit: 0 vulnerabilities at the recorded verification run.
 
-These numbers are evidence from the local implementation run and must be refreshed before `v1.0.0`; they are not a permanent badge claim.
+These numbers are evidence from the local implementation run and must be refreshed before each release; they are not a permanent badge claim.
