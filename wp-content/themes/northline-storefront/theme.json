@@ -1,0 +1,84 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1600px"
+    },
+    "color": {
+      "defaultPalette": false,
+      "palette": [
+        { "slug": "ink", "color": "#171a1b", "name": "Ink" },
+        { "slug": "mineral", "color": "#f2efe8", "name": "Mineral" },
+        { "slug": "paper", "color": "#fffdf8", "name": "Paper" },
+        { "slug": "concrete", "color": "#d5d0c7", "name": "Concrete" },
+        { "slug": "copper", "color": "#c65d32", "name": "Copper" }
+      ]
+    },
+    "spacing": {
+      "spacingSizes": [
+        { "slug": "20", "size": "0.5rem", "name": "2XS" },
+        { "slug": "30", "size": "1rem", "name": "XS" },
+        { "slug": "40", "size": "1.5rem", "name": "S" },
+        { "slug": "50", "size": "2.5rem", "name": "M" },
+        { "slug": "60", "size": "4rem", "name": "L" },
+        { "slug": "70", "size": "7rem", "name": "XL" }
+      ],
+      "units": ["px", "rem", "vw", "%"]
+    },
+    "typography": {
+      "fluid": true,
+      "fontFamilies": [
+        {
+          "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+          "name": "System Sans",
+          "slug": "system-sans"
+        },
+        {
+          "fontFamily": "'Arial Narrow', 'Roboto Condensed', Impact, sans-serif",
+          "name": "Condensed Display",
+          "slug": "condensed-display"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#f2efe8",
+      "text": "#171a1b"
+    },
+    "spacing": {
+      "blockGap": "1.5rem"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--system-sans)",
+      "fontSize": "1rem",
+      "lineHeight": "1.55"
+    },
+    "elements": {
+      "button": {
+        "border": { "radius": "0" },
+        "color": { "background": "#c65d32", "text": "#ffffff" },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--condensed-display)",
+          "fontWeight": "700",
+          "letterSpacing": "0.07em",
+          "textTransform": "uppercase"
+        }
+      },
+      "heading": {
+        "typography": { "fontWeight": "700" }
+      },
+      "link": {
+        "color": { "text": "#c65d32" }
+      }
+    }
+  },
+  "templateParts": [
+    { "area": "header", "name": "header", "title": "Header" },
+    { "area": "footer", "name": "footer", "title": "Footer" }
+  ]
+}
+

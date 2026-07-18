@@ -1,0 +1,27 @@
+name: Runtime E2E
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  storefront:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run env:start
+      - run: npm run setup
+      - run: npm run test:e2e
+      - name: Check debug log
+        if: always()
+        run: |
+          npm run wp -- eval 'echo file_exists(WP_CONTENT_DIR . "/debug.log") ? file_get_contents(WP_CONTENT_DIR . "/debug.log") : "";'

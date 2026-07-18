@@ -1,0 +1,25 @@
+name: Feature
+description: Plan a user-facing or operational capability.
+title: "feat: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the user or store-operator need, not only the proposed code.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Include success, failure, accessibility, security, and responsive states.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence plan
+      description: Tests, screenshots, recordings, and documentation expected.
+

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "7.0"
+  },
+  "phpExtensionBundles": ["kitchen-sink"],
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Northline Commerce Lab"
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginZipFile": {
+        "resource": "url",
+        "url": "https://downloads.wordpress.org/plugin/woocommerce.{{WOOCOMMERCE_VERSION}}.zip"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginZipFile": {
+        "resource": "url",
+        "url": "{{RELEASE_BASE}}/northline-commerce-rules.zip"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installTheme",
+      "themeZipFile": {
+        "resource": "url",
+        "url": "{{RELEASE_BASE}}/northline-storefront.zip"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "wp-cli",
+      "command": "wp northline seed --yes"
+    }
+  ]
+}
+

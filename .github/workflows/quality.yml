@@ -1,0 +1,55 @@
+name: Quality
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  plugin-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run official WordPress Plugin Check
+        uses: wordpress/plugin-check-action@v1
+        with:
+          build-dir: wp-content/plugins/northline-commerce-rules
+          repo-token: ''
+
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+          tools: composer:v2
+      - run: npm ci
+      - run: composer install --no-interaction --prefer-dist
+      - run: npm run lint
+      - run: npm run test:php
+      - run: npm audit --audit-level=high
+      - run: composer audit
+      - run: npm run playground:build
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          NORTHLINE_RELEASE_TAG: v1.0.0
+
+  php-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - name: Check PHP syntax
+        run: find wp-content -name '*.php' -print0 | xargs -0 -n1 php -l

@@ -1,0 +1,25 @@
+{
+  "name": "northline/commerce-lab",
+  "description": "Development and test tooling for Northline Commerce Lab.",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.1",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "phpunit/phpunit": "^11.5",
+    "szepeviktor/phpstan-wordpress": "^2.0",
+    "wp-coding-standards/wpcs": "^3.2",
+    "yoast/phpunit-polyfills": "^3.1"
+  },
+  "scripts": {
+    "phpcs": "phpcs",
+    "phpcbf": "phpcbf",
+    "test": "phpunit --configuration tests/phpunit/phpunit.xml.dist"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "sort-packages": true
+  }
+}

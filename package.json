@@ -1,0 +1,38 @@
+{
+  "name": "northline-commerce-lab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A reproducible WooCommerce portfolio demonstrating storefront operations, safe extension development, and WordPress Playground delivery.",
+  "license": "GPL-2.0-or-later",
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
+    "env:clean": "wp-env clean all",
+    "wp": "wp-env run cli wp",
+    "setup": "./scripts/setup-command.sh",
+    "reset": "./scripts/reset-command.sh",
+    "assets:build": "node scripts/build-demo-images.mjs",
+    "lint": "npm run lint:json && npm run lint:php && npm run lint:css && npm run check:zero-cost",
+    "lint:json": "node scripts/validate-json.mjs",
+    "lint:php": "vendor/bin/phpcs",
+    "lint:css": "stylelint 'wp-content/themes/**/*.css'",
+    "check:zero-cost": "node scripts/check-zero-cost.mjs",
+    "test": "npm run test:php && npm run test:e2e",
+    "test:php": "vendor/bin/phpunit --configuration tests/phpunit/phpunit.xml.dist",
+    "test:e2e": "playwright test",
+    "screenshots": "node scripts/capture-screenshots.mjs",
+    "playground:build": "npm run assets:build && node scripts/build-playground.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.0",
+    "@wordpress/env": "^10.25.0",
+    "archiver": "^7.0.1",
+    "axe-playwright": "^2.1.0",
+    "sharp": "^0.35.3",
+    "stylelint": "^16.21.0",
+    "stylelint-config-standard": "^38.0.0"
+  }
+}
