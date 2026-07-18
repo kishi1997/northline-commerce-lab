@@ -28,11 +28,11 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.54.0",
-    "@wordpress/env": "^10.25.0",
-    "archiver": "^7.0.1",
+    "@wordpress/env": "^11.11.0",
+    "archiver": "^8.0.0",
     "axe-playwright": "^2.1.0",
     "sharp": "^0.35.3",
-    "stylelint": "^16.21.0",
-    "stylelint-config-standard": "^38.0.0"
+    "stylelint": "^17.14.0",
+    "stylelint-config-standard": "^40.0.0"
   }
 }
