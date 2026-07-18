@@ -1,6 +1,6 @@
 {
   "name": "northline-commerce-lab",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "A reproducible WooCommerce portfolio demonstrating storefront operations, safe extension development, and WordPress Playground delivery.",
   "license": "GPL-2.0-or-later",

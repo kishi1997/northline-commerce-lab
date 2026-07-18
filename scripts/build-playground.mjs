@@ -1,19 +1,45 @@
 import archiver from 'archiver';
 import { createWriteStream } from 'node:fs';
-import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
-import { basename, dirname, join, resolve } from 'node:path';
+import { mkdir, readFile, readdir, rm, writeFile } from 'node:fs/promises';
+import { basename, dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const dist = join(projectRoot, 'playground', 'dist');
-const releaseTag = process.env.NORTHLINE_RELEASE_TAG ?? 'v1.0.0';
+const dist = join(projectRoot, 'playground', 'bundle');
+const releaseTag = process.env.NORTHLINE_RELEASE_TAG ?? 'v1.0.1';
 const repository = process.env.GITHUB_REPOSITORY ?? 'kishi1997/northline-commerce-lab';
-const releaseBase = `https://github.com/${repository}/releases/download/${releaseTag}`;
+const releaseBase = `https://raw.githubusercontent.com/${repository}/${releaseTag}/playground/bundle`;
 
 await rm(dist, { recursive: true, force: true });
 await mkdir(dist, { recursive: true });
 
 async function zipDirectory(source, destination) {
+  const archiveDate = new Date('1980-01-01T00:00:00.000Z');
+
+  async function filesIn(directory) {
+    const files = [];
+    const entries = await readdir(directory, { withFileTypes: true });
+
+    for (const entry of entries.sort((left, right) => left.name.localeCompare(right.name))) {
+      const absolute = join(directory, entry.name);
+      if (entry.isDirectory()) {
+        files.push(...await filesIn(absolute));
+      } else if (entry.isFile()) {
+        files.push(absolute);
+      }
+    }
+
+    return files;
+  }
+
+  const files = await filesIn(source);
+  const entries = await Promise.all(
+    files.map(async (file) => ({
+      contents: await readFile(file),
+      file,
+    })),
+  );
+
   await new Promise((resolvePromise, rejectPromise) => {
     const output = createWriteStream(destination);
     const archive = archiver('zip', { zlib: { level: 9 } });
@@ -22,7 +48,14 @@ async function zipDirectory(source, destination) {
     archive.on('warning', rejectPromise);
     archive.on('error', rejectPromise);
     archive.pipe(output);
-    archive.directory(source, basename(source));
+
+    for (const entry of entries) {
+      archive.append(entry.contents, {
+        date: archiveDate,
+        mode: 0o100644,
+        name: join(basename(source), relative(source, entry.file)),
+      });
+    }
     archive.finalize();
   });
 }
@@ -49,4 +82,4 @@ await writeFile(join(dist, 'storefront.json'), `${JSON.stringify(storefront, nul
 await writeFile(join(dist, 'admin.json'), `${JSON.stringify(admin, null, 2)}\n`);
 
 console.log(`Built ${dist}`);
-console.log(`Release source: ${releaseBase}`);
+console.log(`Tagged bundle source: ${releaseBase}`);
