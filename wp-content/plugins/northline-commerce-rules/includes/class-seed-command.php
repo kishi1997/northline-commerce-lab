@@ -84,6 +84,20 @@ final class Seed_Command {
 		update_option( 'woocommerce_manage_stock', 'yes' );
 		update_option( 'woocommerce_notify_low_stock_amount', '3' );
 		update_option( 'woocommerce_notify_no_stock_amount', '0' );
+		update_option( 'woocommerce_coming_soon', 'no' );
+		update_option( 'woocommerce_store_pages_only', 'no' );
+		update_option( 'woocommerce_allow_tracking', 'no' );
+		update_option(
+			'woocommerce_onboarding_profile',
+			array(
+				'completed' => true,
+				'skipped'   => true,
+			)
+		);
+		update_option( 'woocommerce_task_list_hidden_lists', array( 'setup', 'extended' ) );
+		update_option( 'woocommerce_task_list_completed_lists', array( 'setup', 'extended' ) );
+		delete_option( 'woocommerce_onboarding_profile_progress' );
+		delete_transient( '_wc_activation_redirect' );
 
 		$cod = (array) get_option( 'woocommerce_cod_settings', array() );
 		update_option(

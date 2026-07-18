@@ -37,7 +37,7 @@
       "step": "installPlugin",
       "pluginZipFile": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/kishi1997/northline-commerce-lab/v1.0.1/playground/bundle/northline-commerce-rules.zip"
+        "url": "https://raw.githubusercontent.com/kishi1997/northline-commerce-lab/v1.0.2/playground/bundle/northline-commerce-rules.zip"
       },
       "options": {
         "activate": true
@@ -47,7 +47,7 @@
       "step": "installTheme",
       "themeZipFile": {
         "resource": "url",
-        "url": "https://raw.githubusercontent.com/kishi1997/northline-commerce-lab/v1.0.1/playground/bundle/northline-storefront.zip"
+        "url": "https://raw.githubusercontent.com/kishi1997/northline-commerce-lab/v1.0.2/playground/bundle/northline-storefront.zip"
       },
       "options": {
         "activate": true
