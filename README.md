@@ -2,13 +2,20 @@
 
 > A fictional, no-sales WooCommerce engineering demo. No real products, payments, customer data, or regulatory-compliance claims are involved.
 
+[![Quality](https://github.com/kishi1997/northline-commerce-lab/actions/workflows/quality.yml/badge.svg)](https://github.com/kishi1997/northline-commerce-lab/actions/workflows/quality.yml)
+[![Runtime E2E](https://github.com/kishi1997/northline-commerce-lab/actions/workflows/e2e.yml/badge.svg)](https://github.com/kishi1997/northline-commerce-lab/actions/workflows/e2e.yml)
+
+**[Launch storefront in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fgithub.com%2Fkishi1997%2Fnorthline-commerce-lab%2Freleases%2Fdownload%2Fv1.0.0%2Fstorefront.json)**
+
+**[Launch disposable administrator demo](https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fgithub.com%2Fkishi1997%2Fnorthline-commerce-lab%2Freleases%2Fdownload%2Fv1.0.0%2Fadmin.json)**
+
 ![Approved Northline storefront direction](docs/design/approved-homepage-v2.png)
 
 Implementation evidence: [desktop storefront](docs/screenshots/homepage-desktop.png), [mobile storefront](docs/screenshots/homepage-mobile.png), and [product detail](docs/screenshots/product-desktop.png).
 
 Northline Commerce Lab is a reproducible WooCommerce portfolio project built to demonstrate both customer-facing delivery and day-to-day store operations. It covers catalog management, variable products, inventory, coupons, shipping, Checkout Blocks, order handling, safe custom extension development, automated testing, and a disposable WordPress Playground demo.
 
-**Status:** implementation in progress. The design direction and architecture are approved; the public Playground release will be linked here at `v1.0.0`.
+**Status:** `v1.0.0` MVP. Local verification is complete; the links above use a versioned, disposable Playground bundle.
 
 **Cost policy:** the project must remain usable for CAD/USD/JPY 0. No paid hosting, payment gateway, email provider, metered API, premium plugin/theme, larger GitHub runner, or billable CI storage is permitted. See [zero-cost policy](docs/zero-cost-policy.md).
 
